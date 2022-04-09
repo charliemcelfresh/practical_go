@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package practical_go;
+option go_package = "rpc/practical_go";
+
+// PracticalGo demonstrates useful Twirp patterns
+service PracticalGo {
+  // CreateItem creates an Item
+  rpc CreateItem(CreateItemRequest) returns (None);
+  // GetItem gets an Item
+  rpc GetItem(GetItemRequest) returns (Item);
+}
+
+message None {}
+
+message CreateItemRequest {
+  string name = 1; // required
+}
+
+message GetItemRequest {
+  string item_id = 1;
+}
+
+message Item {
+  string item_id = 1;
+  string name = 2;
+  string created_at = 3;
+}
